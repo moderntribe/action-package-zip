@@ -4,7 +4,7 @@ GH_BOT_TOKEN=$1
 BOT_WORKSPACE="/home/tr1b0t/bot-workspace"
 SCRIPT_PATH="/home/tr1b0t/tribe-product-utils"
 
-PLUGIN_NAME=$(cat $GITHUB_EVENT_PATH | jq '.repo.name')
+PLUGIN_NAME=$(cat $GITHUB_EVENT_PATH | jq '.pull_request.repo.name')
 
 rsync -a "$GITHUB_WORKSPACE/" "$BOT_WORKSPACE/$PLUGIN_NAME"
 chown -R tr1b0t:tr1b0t /home/tr1b0t/
@@ -38,7 +38,7 @@ ln -s $(which php) /usr/bin/php
 
 # Run codesniffing
 $SCRIPT_PATH/mt package \
-    --plugin $(cat $GITHUB_EVENT_PATH | jq '.repo.full_name') \
+    --plugin $(cat $GITHUB_EVENT_PATH | jq '.pull_request.repo.full_name') \
     --branch $(cat $GITHUB_EVENT_PATH | jq '.pull_request.head.ref') \
     --ignore-view-versions \
     --clear \
