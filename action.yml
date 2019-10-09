@@ -1,0 +1,12 @@
+name: 'Tribe Package Zip'
+description: 'Packages a zip for testing/release'
+inputs:
+  github-bot-token:
+    description: 'Personal Access Token of user that can execute code reviews'
+    required: true
+    default: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github-bot-token }}
