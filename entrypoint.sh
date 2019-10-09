@@ -12,6 +12,8 @@ chown -R tr1b0t:tr1b0t /tmp
 
 cd $BOT_WORKSPACE/$PLUGIN_NAME
 
+git submodule update --init --recursive
+
 NODE_VERSION=$(cat .nvmrc)
 
 curl https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash \
