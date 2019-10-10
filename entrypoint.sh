@@ -55,8 +55,8 @@ echo $BRANCH
 
 # Run codesniffing
 $SCRIPT_PATH/mt package \
-    --plugin=$REPO_NAME \
-    --branch=$BRANCH \
+    --plugin $PLUGIN_NAME \
+    --branch $BRANCH \
     --ignore-view-versions \
     --clear \
     -vvv
