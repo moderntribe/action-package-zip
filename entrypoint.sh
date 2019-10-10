@@ -14,6 +14,10 @@ chown -R tr1b0t:tr1b0t /tmp
 
 cd $BOT_WORKSPACE/$PLUGIN_NAME
 
+echo $PLUGIN_NAME
+PLUGIN_NAME="${PLUGIN_NAME%\"}"
+PLUGIN_NAME="${PLUGIN_NAME#\"}"
+echo $PLUGIN_NAME
 pwd
 ls -al
 
@@ -49,3 +53,5 @@ $SCRIPT_PATH/mt package \
     --ignore-view-versions \
     --clear \
     -v
+
+exit 1
