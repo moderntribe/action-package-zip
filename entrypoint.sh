@@ -45,8 +45,8 @@ ln -s $(which php) /usr/bin/php
 
 # Run codesniffing
 $SCRIPT_PATH/mt package \
-    --plugin $(cat $GITHUB_EVENT_PATH | jq '.repository.full_name') \
-    --branch $(cat $GITHUB_EVENT_PATH | jq '.pull_request.head.ref') \
+    --plugin=$(cat $GITHUB_EVENT_PATH | jq '.repository.full_name') \
+    --branch=$(cat $GITHUB_EVENT_PATH | jq '.pull_request.head.ref') \
     --ignore-view-versions \
     --clear \
     -vvv
