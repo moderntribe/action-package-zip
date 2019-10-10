@@ -14,6 +14,9 @@ chown -R tr1b0t:tr1b0t /tmp
 
 cd $BOT_WORKSPACE/$PLUGIN_NAME
 
+pwd
+ls -al
+
 git submodule update --init --recursive
 
 NODE_VERSION=$(cat .nvmrc)
@@ -30,6 +33,7 @@ npm install -g gulp
 gosu tr1b0t bash -c "git clone --depth 1 --branch master --single-branch https://tr1b0t:$GH_BOT_TOKEN@github.com/moderntribe/tribe-product-utils.git $SCRIPT_PATH"
 
 cd $SCRIPT_PATH
+gosu tr1b0t bash -c "cp mt-sample.json mt.json"
 gosu tr1b0t bash -c "composer update -o"
 gosu tr1b0t bash -c "chmod +x mt"
 
