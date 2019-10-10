@@ -5,15 +5,12 @@ BOT_WORKSPACE="/home/tr1b0t/bot-workspace"
 SCRIPT_PATH="/home/tr1b0t/tribe-product-utils"
 
 PLUGIN_NAME=$(cat $GITHUB_EVENT_PATH | jq '.repository.name')
-REPO_NAME=$(cat $GITHUB_EVENT_PATH | jq '.repository.full_name')
 BRANCH=$(cat $GITHUB_EVENT_PATH | jq '.pull_request.head.ref')
 
 
 # Remove double quotes
 PLUGIN_NAME="${PLUGIN_NAME%\"}"
 PLUGIN_NAME="${PLUGIN_NAME#\"}"
-REPO_NAME="${REPO_NAME%\"}"
-REPO_NAME="${REPO_NAME#\"}"
 BRANCH="${BRANCH%\"}"
 BRANCH="${BRANCH#\"}"
 
@@ -45,13 +42,10 @@ gosu tr1b0t bash -c "cp mt-sample.json mt.json"
 gosu tr1b0t bash -c "composer update -o"
 gosu tr1b0t bash -c "chmod +x mt"
 
-cd $BOT_WORKSPACE/$PLUGIN_NAME
+cd $BOT_WORKSPACE
 
 # Alias PHP to the path our mt-jenkins scripts expect
 ln -s $(which php) /usr/bin/php
-
-echo $REPO_NAME
-echo $BRANCH
 
 # Run codesniffing
 $SCRIPT_PATH/mt package \
