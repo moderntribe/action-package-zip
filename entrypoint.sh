@@ -25,11 +25,14 @@ git submodule update --init --recursive
 
 NODE_VERSION=$(cat .nvmrc)
 
-curl https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash \
-    && . $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
+if [[ ! -z "$NODE_VERSION" ]]
+then
+    curl https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash \
+        && . $NVM_DIR/nvm.sh \
+        && nvm install $NODE_VERSION \
+        && nvm alias default $NODE_VERSION \
+        && nvm use default
+fi
 
 npm install -g gulp
 
