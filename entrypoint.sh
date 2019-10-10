@@ -6,6 +6,10 @@ SCRIPT_PATH="/home/tr1b0t/tribe-product-utils"
 
 PLUGIN_NAME=$(cat $GITHUB_EVENT_PATH | jq '.repository.name')
 
+# Remove double quotes
+PLUGIN_NAME="${PLUGIN_NAME%\"}"
+PLUGIN_NAME="${PLUGIN_NAME#\"}"
+
 mkdir $BOT_WORKSPACE
 
 rsync -a "$GITHUB_WORKSPACE/" "$BOT_WORKSPACE/$PLUGIN_NAME"
@@ -13,13 +17,6 @@ chown -R tr1b0t:tr1b0t /home/tr1b0t/
 chown -R tr1b0t:tr1b0t /tmp
 
 cd $BOT_WORKSPACE/$PLUGIN_NAME
-
-echo $PLUGIN_NAME
-PLUGIN_NAME="${PLUGIN_NAME%\"}"
-PLUGIN_NAME="${PLUGIN_NAME#\"}"
-echo $PLUGIN_NAME
-pwd
-ls -al
 
 git submodule update --init --recursive
 
@@ -41,7 +38,7 @@ gosu tr1b0t bash -c "cp mt-sample.json mt.json"
 gosu tr1b0t bash -c "composer update -o"
 gosu tr1b0t bash -c "chmod +x mt"
 
-cd $BOT_WORKSPACE
+cd $BOT_WORKSPACE/$PLUGIN_NAME
 
 # Alias PHP to the path our mt-jenkins scripts expect
 ln -s $(which php) /usr/bin/php
