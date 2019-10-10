@@ -7,7 +7,6 @@ SCRIPT_PATH="/home/tr1b0t/tribe-product-utils"
 PLUGIN_NAME=$(cat $GITHUB_EVENT_PATH | jq '.repository.name')
 BRANCH=$(cat $GITHUB_EVENT_PATH | jq '.pull_request.head.ref')
 
-
 # Remove double quotes
 PLUGIN_NAME="${PLUGIN_NAME%\"}"
 PLUGIN_NAME="${PLUGIN_NAME#\"}"
@@ -43,6 +42,8 @@ gosu tr1b0t bash -c "composer update -o"
 gosu tr1b0t bash -c "chmod +x mt"
 
 cd $BOT_WORKSPACE
+
+which npm
 
 # Alias PHP to the path our mt-jenkins scripts expect
 ln -s $(which php) /usr/bin/php
