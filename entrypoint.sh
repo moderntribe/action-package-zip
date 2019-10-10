@@ -31,7 +31,7 @@ curl https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash 
 npm install -g gulp
 
 # Setup tribe-product-utils
-gosu tr1b0t bash -c "git clone --depth 1 --branch master --single-branch https://tr1b0t:$GH_BOT_TOKEN@github.com/moderntribe/tribe-product-utils.git $SCRIPT_PATH"
+gosu tr1b0t bash -c "git clone --depth 1 --branch gh-action-test --single-branch https://tr1b0t:$GH_BOT_TOKEN@github.com/moderntribe/tribe-product-utils.git $SCRIPT_PATH"
 
 cd $SCRIPT_PATH
 gosu tr1b0t bash -c "cp mt-sample.json mt.json"
