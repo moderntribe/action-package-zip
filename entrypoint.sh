@@ -43,7 +43,9 @@ gosu tr1b0t bash -c "chmod +x mt"
 
 cd $BOT_WORKSPACE
 
-which npm
+npm --version
+WHICH_NPM=$(which npm)
+echo "WHICH NPM: $WHICH_NPM"
 
 # Alias PHP to the path our mt-jenkins scripts expect
 ln -s $(which php) /usr/bin/php
