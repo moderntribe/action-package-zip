@@ -50,10 +50,13 @@ cd $BOT_WORKSPACE/$PLUGIN_NAME
 # Alias PHP to the path our mt-jenkins scripts expect
 ln -s $(which php) /usr/bin/php
 
+echo $REPO_NAME
+echo $BRANCH
+
 # Run codesniffing
 $SCRIPT_PATH/mt package \
-    --plugin $REPO_NAME \
-    --branch $BRANCH \
+    --plugin=$REPO_NAME \
+    --branch=$BRANCH \
     --ignore-view-versions \
     --clear \
     -vvv
