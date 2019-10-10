@@ -43,6 +43,9 @@ cd $BOT_WORKSPACE/$PLUGIN_NAME
 # Alias PHP to the path our mt-jenkins scripts expect
 ln -s $(which php) /usr/bin/php
 
+cat $GITHUB_EVENT_PATH | jq '.repository.full_name'
+cat $GITHUB_EVENT_PATH | jq '.pull_request.head.ref'
+
 # Run codesniffing
 $SCRIPT_PATH/mt package \
     --plugin=$(cat $GITHUB_EVENT_PATH | jq '.repository.full_name') \
