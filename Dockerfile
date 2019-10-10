@@ -16,6 +16,7 @@ RUN set -eux; \
     libjpeg62-turbo-dev \
     libpng-dev \
     nodejs \
+    npm \
     rsync \
     sudo \
     tree \
