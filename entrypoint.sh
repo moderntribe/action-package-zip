@@ -49,6 +49,7 @@ $SCRIPT_PATH/mt package \
     --branch $(cat $GITHUB_EVENT_PATH | jq '.pull_request.head.ref') \
     --ignore-view-versions \
     --clear \
-    -v
+    -v \
+    --debug
 
 exit 1
