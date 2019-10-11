@@ -65,10 +65,16 @@ RAW_RESULTS=$($SCRIPT_PATH/mt package \
 RESULTS=$(echo $RAW_RESULTS | sed -n -e '/Packaging results/,$p')
 ZIP=$(echo $RESULTS | grep -o '".*"' | sed 's/"//g')
 
+echo "**************************\n"
+echo "**************************\n"
+echo "**************************\n"
 echo $RESULTS
+echo "**************************\n"
+echo "**************************\n"
+echo "**************************\n"
 echo $ZIP
-
-echo ::set-output name=results::$RESULTS
-echo ::set-output name=zip::$ZIP
+echo "**************************\n"
+echo "**************************\n"
+echo "**************************\n"
 
 exit 1
