@@ -8,6 +8,7 @@ RUN set -eux; \
     apt-get update; \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
+    cmake \
     curl \
     git \
     gosu \
@@ -25,6 +26,7 @@ RUN set -eux; \
     sudo \
     tree \
     zip \
+    udev \
     unzip \
     wget ; \
     rm -rf /var/lib/apt/lists/*; \
@@ -54,6 +56,7 @@ RUN cd /usr/src/ \
 && mkdir build \
 && cd build \
 && meson .. \
+&& cd .. \
 && export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
 && ldconfig \
 && modprobe fuse
