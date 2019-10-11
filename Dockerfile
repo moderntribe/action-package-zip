@@ -17,6 +17,7 @@ RUN set -eux; \
     libjpeg62-turbo-dev \
     libpng-dev \
     libxml2-dev \
+    meson \
     mime-support \
     nodejs \
     npm \
@@ -50,8 +51,9 @@ RUN cd /usr/src/ \
 && wget https://github.com/libfuse/libfuse/releases/download/fuse-3.5.0/fuse-3.5.0.tar.xz \
 && tar Jxf fuse-3.5.0.tar.xz \
 && cd fuse-3.5.0 \
-&& ./configure --prefix=/usr/local \
-&& make && make install \
+&& mkdir build \
+&& cd build \
+&& meson .. \
 && export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
 && ldconfig \
 && modprobe fuse
