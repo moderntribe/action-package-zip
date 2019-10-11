@@ -14,6 +14,7 @@ BRANCH="${BRANCH%\"}"
 BRANCH="${BRANCH#\"}"
 
 mkdir $BOT_WORKSPACE
+mkdir $GITHUB_WORKSPACE/zip
 
 rsync -a "$GITHUB_WORKSPACE/" "$BOT_WORKSPACE/$PLUGIN_NAME"
 chown -R tr1b0t:tr1b0t /home/tr1b0t/
@@ -57,6 +58,7 @@ ln -s $(which php) /usr/bin/php
 $SCRIPT_PATH/mt package \
     --plugin $PLUGIN_NAME \
     --branch $BRANCH \
+    --output "$GITHUB_WORKSPACE/zip/" \
     --ignore-view-versions \
     --clear \
     -vvv
