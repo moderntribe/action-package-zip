@@ -65,7 +65,7 @@ RAW_RESULTS=$($SCRIPT_PATH/mt package \
 RESULTS=$(echo "${RAW_RESULTS}" | sed -n -e '/Packaging results/,$p')
 ZIP=$(echo "${RESULTS}" | grep -o '".*"' | sed 's/"//g')
 
-echo "${RESULTS}" > ./zip/$ZIP.txt
+echo "${RESULTS}" > $GITHUB_WORKSPACE/zip/$ZIP.txt
 
 echo ::set-output name=zip::$ZIP
 echo ::set-output name=results::"${RESULTS}"
