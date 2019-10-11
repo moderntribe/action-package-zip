@@ -8,26 +8,19 @@ RUN set -eux; \
     apt-get update; \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
-    cmake \
     curl \
     git \
     gosu \
     jq \
-    kmod \
-    libcurl4-openssl-dev \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
-    libxml2-dev \
-    meson \
-    mime-support \
     nodejs \
     npm \
     rsync \
     sudo \
     tree \
     zip \
-    udev \
     unzip \
     wget ; \
     rm -rf /var/lib/apt/lists/*; \
@@ -48,27 +41,6 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); echo 'Invalid installer' . PHP_EOL; exit(1); }" \
 && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer --snapshot \
 && rm -f /tmp/composer-setup.*
-
-# via: https://tecadmin.net/mount-s3-bucket-centosrhel-ubuntu-using-s3fs/
-RUN cd /usr/src/ \
-&& wget https://github.com/libfuse/libfuse/releases/download/fuse-3.5.0/fuse-3.5.0.tar.xz \
-&& tar Jxf fuse-3.5.0.tar.xz \
-&& cd fuse-3.5.0 \
-&& mkdir build \
-&& cd build \
-&& meson .. \
-&& cd .. \
-&& export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
-&& ldconfig \
-&& depmod \
-&& modprobe fuse
-
-RUN cd /usr/src/ \
-&& git clone https://github.com/s3fs-fuse/s3fs-fuse.git \
-&& cd s3fs-fuse \
-&& ./autogen.sh \
-&& ./configure \
-&& make && make install
 
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/*.sh
