@@ -13,6 +13,7 @@ RUN set -eux; \
     git \
     gosu \
     jq \
+    kmod \
     libcurl4-openssl-dev \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -20,7 +21,6 @@ RUN set -eux; \
     libxml2-dev \
     meson \
     mime-support \
-    modprobe \
     nodejs \
     npm \
     rsync \
