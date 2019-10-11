@@ -62,17 +62,17 @@ RAW_RESULTS=$($SCRIPT_PATH/mt package \
     --ignore-view-versions \
     --clear)
 
-RESULTS=$(echo $RAW_RESULTS | sed -n -e '/Packaging results/,$p')
-ZIP=$(echo $RESULTS | grep -o '".*"' | sed 's/"//g')
+RESULTS=$(echo "${RAW_RESULTS}" | sed -n -e '/Packaging results/,$p')
+ZIP=$(echo "${RESULTS}" | grep -o '".*"' | sed 's/"//g')
 
 echo "**************************\n"
 echo "**************************\n"
 echo "**************************\n"
-echo $RESULTS
+echo "${RESULTS}"
 echo "**************************\n"
 echo "**************************\n"
 echo "**************************\n"
-echo $ZIP
+echo "${ZIP}"
 echo "**************************\n"
 echo "**************************\n"
 echo "**************************\n"
