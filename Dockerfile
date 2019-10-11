@@ -49,7 +49,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 RUN cd /usr/src/ \
 && wget https://github.com/libfuse/libfuse/releases/download/fuse-3.5.0/fuse-3.5.0.tar.xz \
 && tar Jxf fuse-3.5.0.tar.xz \
-&& cd fuse-3.1.0 \
+&& cd fuse-3.5.0 \
 && ./configure --prefix=/usr/local \
 && make && make install \
 && export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
