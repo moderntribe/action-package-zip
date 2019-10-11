@@ -77,4 +77,7 @@ echo "**************************\n"
 echo "**************************\n"
 echo "**************************\n"
 
+echo ::set-output name=zip::$ZIP
+echo ::set-output name=results::"${RESULTS}"
+
 exit 1
