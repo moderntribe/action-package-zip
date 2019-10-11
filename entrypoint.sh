@@ -55,12 +55,20 @@ echo "WHICH NPM: $WHICH_NPM"
 ln -s $(which php) /usr/bin/php
 
 # Run codesniffing
-$SCRIPT_PATH/mt package \
+RAW_RESULTS=$($SCRIPT_PATH/mt package \
     --plugin $PLUGIN_NAME \
     --branch $BRANCH \
-    --output "$GITHUB_WORKSPACE/zip/" \
+    --output "$GITHUB_WORKSPACE/zip" \
     --ignore-view-versions \
-    --clear \
-    -vvv
+    --clear)
+
+RESULTS=$(echo $RAW_RESULTS | sed -n -e '/Packaging results/,$p')
+ZIP=$(echo $RESULTS | grep -o '".*"' | sed 's/"//g')
+
+echo $RESULTS
+echo $ZIP
+
+echo ::set-output name=results::$RESULTS
+echo ::set-output name=zip::$ZIP
 
 exit 1
