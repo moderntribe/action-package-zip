@@ -60,6 +60,7 @@ RUN cd /usr/src/ \
 && cd .. \
 && export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
 && ldconfig \
+&& depmod \
 && modprobe fuse
 
 RUN cd /usr/src/ \
