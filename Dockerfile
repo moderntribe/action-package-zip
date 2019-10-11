@@ -20,6 +20,7 @@ RUN set -eux; \
     libxml2-dev \
     meson \
     mime-support \
+    modprobe \
     nodejs \
     npm \
     rsync \
