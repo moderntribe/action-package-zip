@@ -60,7 +60,8 @@ RAW_RESULTS=$($SCRIPT_PATH/mt package \
     --branch $BRANCH \
     --output "$GITHUB_WORKSPACE/zip" \
     --ignore-view-versions \
-    --enable-s3)
+    --enable-s3 \
+    -vvv)
 
 echo $RAW_RESULTS
 
