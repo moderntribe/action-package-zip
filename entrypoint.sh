@@ -62,6 +62,8 @@ RAW_RESULTS=$($SCRIPT_PATH/mt package \
     --ignore-view-versions \
     --enable-s3)
 
+echo $RAW_RESULTS
+
 RESULTS=$(echo "${RAW_RESULTS}" | sed -n -e '/Packaging results/,$p')
 ZIP=$(echo "${RESULTS}" | grep -o '".*"' | sed 's/"//g')
 
