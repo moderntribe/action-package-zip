@@ -69,3 +69,5 @@ echo "${RESULTS}" > $GITHUB_WORKSPACE/zip/$ZIP.txt
 
 echo ::set-output name=zip::$ZIP
 echo ::set-output name=results::"${RESULTS}"
+
+exit 1
