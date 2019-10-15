@@ -60,7 +60,7 @@ RAW_RESULTS=$($SCRIPT_PATH/mt package \
     --branch $BRANCH \
     --output "$GITHUB_WORKSPACE/zip" \
     --ignore-view-versions \
-    --clear)
+    --send-to-s3)
 
 RESULTS=$(echo "${RAW_RESULTS}" | sed -n -e '/Packaging results/,$p')
 ZIP=$(echo "${RESULTS}" | grep -o '".*"' | sed 's/"//g')
