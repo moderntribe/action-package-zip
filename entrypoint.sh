@@ -55,22 +55,30 @@ echo "WHICH NPM: $WHICH_NPM"
 ln -s $(which php) /usr/bin/php
 
 # Run codesniffing
-RAW_RESULTS=$($SCRIPT_PATH/mt package \
+$SCRIPT_PATH/mt package \
     --plugin $PLUGIN_NAME \
     --branch $BRANCH \
     --output "$GITHUB_WORKSPACE/zip" \
     --ignore-view-versions \
     --enable-s3 \
-    -vvv)
+    -vvv
 
-echo $RAW_RESULTS
+#RAW_RESULTS=$($SCRIPT_PATH/mt package \
+#    --plugin $PLUGIN_NAME \
+#    --branch $BRANCH \
+#    --output "$GITHUB_WORKSPACE/zip" \
+#    --ignore-view-versions \
+#    --enable-s3 \
+#    -vvv)
 
-RESULTS=$(echo "${RAW_RESULTS}" | sed -n -e '/Packaging results/,$p')
-ZIP=$(echo "${RESULTS}" | grep -o '".*"' | sed 's/"//g')
+#echo $RAW_RESULTS
 
-echo "${RESULTS}" > $GITHUB_WORKSPACE/zip/$ZIP.txt
+#RESULTS=$(echo "${RAW_RESULTS}" | sed -n -e '/Packaging results/,$p')
+#ZIP=$(echo "${RESULTS}" | grep -o '".*"' | sed 's/"//g')
 
-echo ::set-output name=zip::$ZIP
-echo ::set-output name=results::"${RESULTS}"
+#echo "${RESULTS}" > $GITHUB_WORKSPACE/zip/$ZIP.txt
+
+#echo ::set-output name=zip::$ZIP
+#echo ::set-output name=results::"${RESULTS}"
 
 exit 1
